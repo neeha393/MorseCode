@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Morse code
+    </title>
+    <link rel="icon" href="images\fav.jpg">
+    <link rel="stylesheet" href="styleind.css">
+  </head>
+<body>
+<center>
+<h2>Enter text for encryption-</h2>
+<form>
+<input type="text" id="txt" name="txt">
+<input type="submit" id="sub" name="sub" onClick="Morse()">
+</form><br><br>
+
+<script>
+function textToMorseCode(text) {
+    const morseCode = {
+        'A': '.-',   'B': '-...', 'C': '-.-.', 'D': '-..',
+        'E': '.',    'F': '..-.', 'G': '--.',  'H': '....',
+        'I': '..',   'J': '.---', 'K': '-.-',  'L': '.-..',
+        'M': '--',   'N': '-.',   'O': '---',  'P': '.--.',
+        'Q': '--.-', 'R': '.-.',  'S': '...',  'T': '-',
+        'U': '..-',  'V': '...-', 'W': '.--',  'X': '-..-',
+        'Y': '-.--', 'Z': '--..',
+        '0': '-----', '1': '.----', '2': '..---',
+        '3': '...--', '4': '....-', '5': '.....',
+        '6': '-....', '7': '--...', '8': '---..',
+        '9': '----.',
+        ' ': ' '
+    };
+
+    text = text.toUpperCase(); 
+    let result = '';
+    for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        if (morseCode[char]) {
+            result += morseCode[char] + ' ';
+        } else {
+            result += ' ';
+        }
+    }
+    return result.trim();
+}
+
+function Morse(){
+const text = document.getElementById("txt").value;
+const morseCode = textToMorseCode(text);
+document.write("<h1>Here is your morse code :</h1> ");
+document.write(morseCode);
+}
+</script>
+</center>
+</body>
+</html>
